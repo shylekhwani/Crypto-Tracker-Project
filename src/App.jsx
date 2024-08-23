@@ -25,6 +25,7 @@ const [symbol,Setsymbol] = useState('$')
    <CurrencyContext.Provider value={{currency,Setcurrency,symbol,Setsymbol}}>
     
         <Home />
+      
    
      </CurrencyContext.Provider>
     </>
