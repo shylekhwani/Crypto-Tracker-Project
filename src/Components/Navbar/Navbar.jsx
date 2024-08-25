@@ -12,11 +12,15 @@ const {Setcurrency,Setsymbol} = useContext(CurrencyContext);
 
 
 const navigate = useNavigate();
+
 function handelsubmit(value){
   navigate(`/details/${value}`);
   console.log(value)
 }
 
+function handelredirect(){
+  navigate('/')
+}
 
     return(<div className="navbar bg-base-100">
         <div className="navbar-start">
@@ -63,7 +67,7 @@ function handelsubmit(value){
             </ul>
           </div>
         </div>
-        <div className="navbar-center">
+        <div onClick={()=>handelredirect()} className="navbar-center">
           <a className="btn btn-ghost text-xl">Crypto Tracker</a>
         </div>
         <div className="navbar-end">
