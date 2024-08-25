@@ -35,6 +35,7 @@ const{data,isLoading,isError,error}=useQuery({
     cacheTime: 1000 * 60 * 2, // we store data for 2 minutes after we make an api call
     staleTime: 1000 * 60 * 2 // for how long we going to consider data fresh and we dont make an new api call that minutes
 })
+
 // useEffect(()=>{
 //         console.log(data,'responeee')
 //     },[data])
@@ -43,16 +44,19 @@ const{data,isLoading,isError,error}=useQuery({
 //     return <div className="text-center py-8 text-lg">Loading...</div>;
 //   }
 
-const filteredData = data && data.filter((coin) => {
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// const filteredData = data && data.filter((coin) => {
 
   
-const lowerCaseSearchQuery = searchQuery?.toLowerCase() || ''; //If searchQuery is undefined or null, it defaults to an empty string ('') to prevent the toLowerCase() call from failing.
+// const lowerCaseSearchQuery = searchQuery?.toLowerCase() || ''; //If searchQuery is undefined or null, it defaults to an empty string ('') to prevent the toLowerCase() call from failing.
  
-return (
-    coin.name.toLowerCase().includes(lowerCaseSearchQuery) ||
-    coin.symbol.toLowerCase().includes(lowerCaseSearchQuery)
-  );
-});
+// return (
+//     coin.name.toLowerCase().includes(lowerCaseSearchQuery) ||
+//     coin.symbol.toLowerCase().includes(lowerCaseSearchQuery)
+//   );
+// });
+
 
 function handelredirect(id){
 navigate(`/details/${id}`)
@@ -97,11 +101,13 @@ navigate(`/details/${id}`)
         </div>
      )}
 
-       {filteredData && filteredData.map((coin) => (
+       {data && data.map((coin) => (
 
           <div onClick={()=>handelredirect(coin.id)} key={coin.id} className="grid grid-cols-4 gap-4 py-4 items-center text-center cursor-pointer">
             {/* {console.log(coin.id)} */}
+
             <div className="flex items-center space-x-4">   
+
               <img src={coin.image} alt={coin.name} className="w-8 h-8" />
 
               <div>

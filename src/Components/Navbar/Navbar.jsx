@@ -13,7 +13,7 @@ const {Setcurrency,Setsymbol} = useContext(CurrencyContext);
 
 const navigate = useNavigate();
 function handelsubmit(value){
-  navigate('/', { state: { coinname: value } });
+  navigate(`/details/${value}`);
   console.log(value)
 }
 

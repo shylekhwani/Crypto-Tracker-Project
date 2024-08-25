@@ -10,7 +10,6 @@ import { useLocation } from "react-router-dom"
 
     return(
         <>
-   <Navbar/>
    <Banner/>
    <CoinTable searchQuery={nameofcoin}/>
         </>
