@@ -108,7 +108,7 @@ navigate(`/details/${id}`)
 
             <div className="flex items-center space-x-4">   
 
-              <img src={coin.image} alt={coin.name} className="w-8 h-8" />
+              <img src={coin.image} alt={coin.name} className="w-8 h-8" loading="lazy" />
 
               <div>
 
