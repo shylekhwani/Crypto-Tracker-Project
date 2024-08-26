@@ -5,13 +5,14 @@ import { useLocation } from "react-router-dom"
 
  function Home(){
     
-    const location = useLocation();
-    const nameofcoin = location.state?.coinname;
+    // const location = useLocation();
+    // const nameofcoin = location.state?.coinname;
 
     return(
         <>
    <Banner/>
-   <CoinTable searchQuery={nameofcoin}/>
+   <CoinTable/>
+   {/* <CoinTable searchQuery={nameofcoin}/> feature i implemented jeeping it for refernce*/} 
         </>
     )
 }

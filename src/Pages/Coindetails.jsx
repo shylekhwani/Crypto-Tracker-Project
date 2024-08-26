@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import CurrencyContext from "../Context/CurrencyContext";
 import parse from 'html-react-parser';
 import { useContext } from "react";
+import { useLocation } from "react-router-dom"
 
 function Coindetails(){
 
@@ -17,14 +18,19 @@ function Coindetails(){
        The keys are the names of the dynamic segments (like coinid), 
        and the values are the actual values in the URL. */}
 
+   const location = useLocation();
+   const nameofcoin = location.state?.coinname;
+
     
    const{data,isLoading,isError,error}=useQuery({
-    queryKey: ['coin', coinid ], 
+    queryKey: ['coin', coinid], 
     queryFn: () => Fetchcoindetails(coinid),
     retry: 2,
     cacheTime: 1000 * 60 * 2, 
     staleTime: 1000 * 60 * 2 
 })
+
+
 /////////////////////////////
 if(isLoading){
     <div className="flex justify-center items-center h-full">

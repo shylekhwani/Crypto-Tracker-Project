@@ -14,8 +14,9 @@ const {Setcurrency,Setsymbol} = useContext(CurrencyContext);
 const navigate = useNavigate();
 
 function handelsubmit(value){
-  navigate(`/details/${value}`);
-  console.log(value)
+  const CaseSensVal = value?.toLowerCase();
+  navigate(`/details/${CaseSensVal}`,{ state: { coinname: CaseSensVal } });
+  console.log(CaseSensVal)
 }
 
 function handelredirect(){
