@@ -3,6 +3,8 @@ import { Line } from "react-chartjs-2";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 
+Chart.register(CategoryScale)
+
 function CoinChart({historicdata, setinterval,setdays,days,currency}){
 
     const chartdays = [
@@ -29,7 +31,7 @@ function CoinChart({historicdata, setinterval,setdays,days,currency}){
     ];
 
 function handeldDayChange(event){
-console.log(event.target.options[event.target.selectedIndex].value)
+console.log(event.target.options[event.target.selectedIndex].value) // event.target is <select> tag, in this we have 'option' property which gives list of option we have and it has 'selectedIndex' which option we have selected 
 const daysselected = event.target.options[event.target.selectedIndex].value;
 if(daysselected==1){
     setinterval('')
@@ -39,8 +41,6 @@ if(daysselected==1){
 setdays(event.target.options[event.target.selectedIndex].value)
 //setdays(event.target.value) this is also working
 }
-
-    Chart.register(CategoryScale)
 
 if(!historicdata){
     return(<ErrorComponent error={'No data Available'}/>) 
@@ -52,10 +52,12 @@ return(
     <Line
 
       data={{
-        labels: [
-          "January", "February", "March", "April", "May", "June",
-          "July", "August", "September", "October", "November", "December"
-        ],
+        
+        labels: historicdata.prices.map(coinPrice => {
+            let date = new Date(coinPrice[0]); // CONVERTING UNIX TIMESTAMP TO DATE
+            let time = date?.getHours() > 12 ? `${date?.getHours() - 12}:${date?.getMinutes()} PM` : `${date?.getHours()}:${date.getMinutes()} AM`;
+            return days === 1 ? time : date.toLocaleDateString(); 
+        }),
 
         datasets: [{
           label: `Price (Past ${days} ${days === 1 ? 'Day ': 'Days'} ) in ${currency.toUpperCase()}`,
