@@ -1,30 +1,42 @@
-import Searchbarform from "../SearchBarform/SearchBarform"
-import { useState } from "react"
+import { useState } from "react";
+import CryptoSymbols from "../../../assets/Crypto Symbols/CryptoSymbols";
+import Searchbarform from "../Searchbarform/Searchbarform";
 
-function SearchbarformLogic({onsubmit}){
+function SearchbarformLogic({ onsubmit }) {
+    const [val, setVal] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
 
-    const [val,setval] = useState('');
-    
-    function handelformsubmit(event){
-        event.preventDefault()
-        console.log('submitted',val)
-        onsubmit?.(val)
-        setval(''); // Clear the input field
-      }
-   
-      function handeltextinputchange(event){
-       console.log(event.target.value)
-       setval(event.target.value)
-      }
+    function handelformsubmit(event) {
+        event.preventDefault();
+        onsubmit?.(val);
+        setVal(''); // Clear the input field
+        setSuggestions([]); // Clear suggestions after submission
+    }
 
-    return(
-        <>
-         <Searchbarform
-      handelformsubmit={handelformsubmit}
-      handeltextinputchange={handeltextinputchange}
-      value={val}
-    />
-        </>
-    )
+    function handeltextinputchange(event) {
+        const inputValue = event.target.value.toLowerCase();
+        setVal(inputValue);
+
+        // Filter suggestions based on input
+        const filteredSuggestions = Object.keys(CryptoSymbols).filter((key) => key.includes(inputValue));
+        setSuggestions(filteredSuggestions);
+    }
+
+    function handleSuggestionClick(suggestion) {
+        setVal(suggestion); // Update input field with the selected suggestion
+        onsubmit?.(suggestion);
+        setSuggestions([]); // Clear suggestions after selection
+    }
+
+    return (
+        <Searchbarform
+            handelformsubmit={handelformsubmit}
+            handeltextinputchange={handeltextinputchange}
+            handleSuggestionClick={handleSuggestionClick}
+            value={val}
+            suggestions={suggestions}
+        />
+    );
 }
-export default SearchbarformLogic
+
+export default SearchbarformLogic;

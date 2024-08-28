@@ -34,7 +34,8 @@ function handelredirect(){
   navigate('/')
 }
 
-    return(<div className="navbar bg-base-100">
+    return(
+        <div className="navbar bg-base-100 relative">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -82,7 +83,7 @@ function handelredirect(){
         <div onClick={()=>handelredirect()} className="navbar-center">
           <a className="btn btn-ghost text-xl">Crypto Tracker</a>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end relative">
           <button className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
