@@ -4,7 +4,7 @@ import { useState } from "react"
 import SearchbarformLogic from "./SearchBarformlogic/SearchBarformlogic";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom"
-
+import CryptoSymbols from "../../assets/Crypto Symbols/CryptoSymbols";
 
 function Navbar({/*setcurrency,setsymbol*/}){
 
@@ -13,10 +13,21 @@ const {Setcurrency,Setsymbol} = useContext(CurrencyContext);
 
 const navigate = useNavigate();
 
-function handelsubmit(value){
+function handelsubmit(value) {
   const CaseSensVal = value?.toLowerCase();
-  navigate(`/details/${CaseSensVal}`,{ state: { coinname: CaseSensVal } });
-  console.log(CaseSensVal)
+
+  // Check if the symbol exists in CryptoSymbols
+  const coinName = CryptoSymbols[CaseSensVal];
+
+  // Navigate using the full coin name
+  if (coinName || value) {
+    navigate(`/details/${coinName || value}`);
+  } else {
+    // Handle the case where the symbol doesn't exist (optional)
+    console.error(`Symbol ${CaseSensVal} not found in CryptoSymbols.`);
+  }
+
+  console.log(CaseSensVal);
 }
 
 function handelredirect(){

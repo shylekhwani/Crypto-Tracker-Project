@@ -20,14 +20,10 @@ function Coindetails(){
        The keys are the names of the dynamic segments (like coinid), 
        and the values are the actual values in the URL. */}
 
-   const location = useLocation();
-   const nameofcoin = location.state?.coinname;
-
-    
    const{data,isLoading,isError,error}=useQuery({
     queryKey: ['coin', coinid], 
     queryFn: () => Fetchcoindetails(coinid),
-    retry: 2,
+    retry : 2,
     cacheTime: 1000 * 60 * 2, 
     staleTime: 1000 * 60 * 2 
 })
@@ -100,13 +96,14 @@ if(isError){
      {/* Vertical Divider */}
      <div className="hidden md:block w-px bg-gray-300 mx-4"></div>
 
-    
-      {/* Right Section: Additional Coin Info */}
-      <div >
+     {/* Right Section: Additional Coin Info */}
+     <div className="flex-1">
         <h2 className="text-lg md:text-xl font-bold mb-4">Coin Info</h2>
-       <div><CoinChartlogic coinid={coinid}/></div>
+        <div className="w-full">
+          <CoinChartlogic coinid={coinid} />
+        </div>
       </div>
-    </div>    
+    </div>
     )
 }
 export default Coindetails
