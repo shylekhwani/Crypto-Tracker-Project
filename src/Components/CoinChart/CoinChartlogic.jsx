@@ -29,7 +29,7 @@ if(isLoading){
 //////////////////////////////
 if(isError){
     return (
-    <ErrorComponent error={error.message}/>
+    <ErrorComponent error={'Somethin Went Wrong'}/>
       );
 }
 ///////////////////////////////////////
