@@ -4,10 +4,7 @@ import Navbar from "../Components/Navbar/Navbar"
 import { useLocation } from "react-router-dom"
 
  function Home(){
-    
-    // const location = useLocation();
-    // const nameofcoin = location.state?.coinname;
-
+  
     return(
         <>
    <Banner/>

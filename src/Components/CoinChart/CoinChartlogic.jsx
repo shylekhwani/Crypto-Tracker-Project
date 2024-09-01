@@ -29,7 +29,7 @@ if(isLoading){
 //////////////////////////////
 if(isError){
     return (
-    <ErrorComponent error={'Somethin Went Wrong'}/>
+    <ErrorComponent error={'Unavailable'}/>
       );
 }
 ///////////////////////////////////////

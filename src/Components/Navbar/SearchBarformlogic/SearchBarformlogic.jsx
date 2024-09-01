@@ -1,30 +1,30 @@
-import { useState } from "react";
-import Searchbarform from "../Searchbar/Searchbar";
+import Searchbarform from "../SearchBarform/SearchBarform"
+import { useState } from "react"
 
-function SearchbarformLogic({ onsubmit }) {
-  
-    const [val, setVal] = useState('');
+function SearchbarformLogic({onsubmit}){
+
+    const [val,setval] = useState('');
+    
+    function handelformsubmit(event){
+        event.preventDefault()
+        console.log('submitted',val)
+        onsubmit?.(val)
+        setval(''); // Clear the input field
+      }
    
+      function handeltextinputchange(event){
+       console.log(event.target.value)
+       setval(event.target.value)
+      }
 
-    function handelformsubmit(event) {
-        event.preventDefault();
-        onsubmit?.(val);
-        setVal(''); // Clear the input field
-    }
-
-    function handeltextinputchange(event) {
-        const inputValue = event.target.value.toLowerCase();
-        // console.log(inputValue,event.target)
-        setVal(inputValue);
-    }
-
-    return (
-        <Searchbarform
-            handelformsubmit={handelformsubmit}
-            handeltextinputchange={handeltextinputchange}
-            value={val}
-        />
-    );
+    return(
+        <>
+         <Searchbarform
+      handelformsubmit={handelformsubmit}
+      handeltextinputchange={handeltextinputchange}
+      value={val}
+    />
+        </>
+    )
 }
-
-export default SearchbarformLogic;
+export default SearchbarformLogic
