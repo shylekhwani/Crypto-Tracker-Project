@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Searchbarform from "../Searchbarform/Searchbarform";
+import Searchbarform from "../Searchbar/Searchbar";
 
 function SearchbarformLogic({ onsubmit }) {
   
