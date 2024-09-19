@@ -1,6 +1,7 @@
 import Searchbar from "../Searchbar/Searchbar"
 import Button from "../../Button/Button"
 
+// eslint-disable-next-line react/prop-types
 function Searchbarform({handelformsubmit,handeltextinputchange,value}){
     return(
         <>

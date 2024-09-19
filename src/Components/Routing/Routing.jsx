@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom"
 import Mainlayout from "../../Pages/Layout"
-import { useLocation } from "react-router-dom"
 import { lazy,Suspense } from "react"
 import { Instagram } from 'react-content-loader'
 import CustomErrorBoundary from "../Custom Error Boundary/CustomErrorBoundary"

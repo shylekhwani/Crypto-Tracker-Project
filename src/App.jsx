@@ -10,6 +10,7 @@ import SearchCoinContext from "./Context/SearchContext"
 import Routing from "./Components/Routing/Routing"
 
 
+
 function App() {
  
 const [currency,Setcurrency] = useState('usd')

@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 function Searchbar({ label, type = 'text', value, onChange }){
     return(
         <>

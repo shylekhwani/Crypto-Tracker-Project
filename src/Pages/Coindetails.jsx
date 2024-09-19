@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import CurrencyContext from "../Context/CurrencyContext";
 import parse from 'html-react-parser';
 import { useContext } from "react";
-import { useLocation } from "react-router-dom"
 import CoinChartlogic from "../Components/CoinChart/CoinChartlogic";
 import ErrorComponent from "../Components/Error Compo/ErrorComponent";
 
@@ -20,7 +19,7 @@ function Coindetails(){
        The keys are the names of the dynamic segments (like coinid), 
        and the values are the actual values in the URL. */}
 
-   const{data,isLoading,isError,error}=useQuery({
+   const{data,isLoading,isError}=useQuery({
     queryKey: ['coin', coinid], 
     queryFn: () => Fetchcoindetails(coinid),
     retry : 2,

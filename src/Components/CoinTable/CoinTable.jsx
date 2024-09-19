@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { Fetchcoindata } from "../../Services/Fetchcoindata"
 import { useQuery } from "@tanstack/react-query";
 import CurrencyContext from "../../Context/CurrencyContext";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import ErrorComponent from "../Error Compo/ErrorComponent";
 
 
+// eslint-disable-next-line no-empty-pattern
 function CoinTable({/*currency ,symbol*/}){ // kepping parametrs just for reference 
 
  const {currency,symbol} = useContext(CurrencyContext);
@@ -27,7 +28,7 @@ const [page,setpage] = useState(1);
 
 
 
-const{data,isLoading,isError,error}=useQuery({
+const{data,isLoading,isError}=useQuery({
     queryKey: ['coins', page, currency], // 2nd parameter is any variable that we are going to pass to queryfunction
     queryFn: () => Fetchcoindata(page, currency),
     retry: 2, // retry 2 times
